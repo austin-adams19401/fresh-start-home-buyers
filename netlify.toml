@@ -1,0 +1,21 @@
+# Netlify build/deploy config for adamsfreshstart.com
+# Static site, no build step. Just deploy the folder.
+
+[build]
+  publish = "."
+  command = ""
+
+# Security + caching headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Force the bare/apex and www to one canonical host (https handled by Netlify)
+[[redirects]]
+  from = "https://www.adamsfreshstart.com/*"
+  to = "https://adamsfreshstart.com/:splat"
+  status = 301
+  force = true
