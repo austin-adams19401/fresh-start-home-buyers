@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../site';
+---
+<BaseLayout title="Privacy Policy" description="How Fresh Start Home Buyers collects, uses, and protects the information you share through this website, the contact form, and the chat assistant.">
+  <PageHero eyebrow="Privacy" title="Privacy policy" lede="Short version: I collect what I need to contact you about your property, I don’t sell it, and you can ask me to delete it any time." />
+  <section>
+    <div class="wrap prose">
+      <p class="muted">Last updated: September 30, 2026</p>
+
+      <h2>Who I am</h2>
+      <p>This website is operated by {site.legalName}, doing business as {site.name}, based in {site.city}, Utah. You can reach me at <a href={`mailto:${site.email}`}>{site.email}</a> or {site.phoneDisplay}.</p>
+
+      <h2>What I collect</h2>
+      <ul>
+        <li><b>Contact form.</b> Your name, phone, email (optional), property address, situation, timeline, and anything you write in the message box.</li>
+        <li><b>Chat assistant.</b> The messages you type into the chat, and any contact details you choose to share with it. The chat is powered by an AI model provided by Anthropic. Your messages are sent to their service to generate replies. Conversation history is stored only in your browser for the current session and is not saved on my servers, except for the lead details the assistant submits on your behalf (the same fields as the contact form).</li>
+        <li><b>Basic technical data.</b> My hosting provider (Netlify) logs standard information such as IP address, browser type, and pages visited, for security and to keep the site running.</li>
+      </ul>
+
+      <h2>How I use it</h2>
+      <p>To contact you about your property, prepare an offer or options, and follow up. I do not sell your information, and I do not add you to marketing lists. If you tell me to stop contacting you, I will.</p>
+
+      <h2>Who else sees it</h2>
+      <ul>
+        <li><b>Netlify</b> hosts the site and stores form submissions so I can read them.</li>
+        <li><b>Anthropic</b> processes chat messages to generate the assistant’s replies, under their API terms.</li>
+        <li><b>Title companies, attorneys, or partner agents</b>, only if we move forward and only what is needed for the transaction.</li>
+      </ul>
+      <p>I do not share your information with anyone else unless required by law.</p>
+
+      <h2>Your choices</h2>
+      <p>Email or text me and I will delete your details from my records. The chat assistant is optional; you can always call, text, or use the form instead.</p>
+
+      <h2>Cookies</h2>
+      <p>This site does not use advertising or tracking cookies. The chat widget uses your browser’s session storage to remember the conversation while you browse, and it clears when you close the tab.</p>
+
+      <h2>Changes</h2>
+      <p>If this policy changes, the date at the top will be updated.</p>
+    </div>
+  </section>
+</BaseLayout>

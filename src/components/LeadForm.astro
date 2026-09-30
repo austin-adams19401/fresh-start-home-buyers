@@ -1,0 +1,59 @@
+---
+import { site, situationOptions, timelineOptions } from '../site';
+interface Props { title?: string; sub?: string }
+const { title = 'Get my cash offer', sub = `Or call/text ${site.phoneDisplay} anytime.` } = Astro.props;
+const page = Astro.url.pathname;
+---
+<form class="lead" name="seller-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/">
+  <h3>{title}</h3>
+  <p class="sub">{sub}</p>
+  <input type="hidden" name="form-name" value="seller-lead" />
+  <input type="hidden" name="source" value="web" />
+  <input type="hidden" name="page" value={page} />
+  <p class="hp"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+  <div class="field">
+    <label for="lf-name">Your name</label>
+    <input id="lf-name" name="name" type="text" required autocomplete="name" />
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label for="lf-phone">Phone</label>
+      <input id="lf-phone" name="phone" type="tel" required autocomplete="tel" />
+    </div>
+    <div class="field">
+      <label for="lf-email">Email</label>
+      <input id="lf-email" name="email" type="email" autocomplete="email" />
+    </div>
+  </div>
+  <div class="field">
+    <label for="lf-address">Property address</label>
+    <input id="lf-address" name="property_address" type="text" placeholder="Street, City" required autocomplete="street-address" />
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label for="lf-situation">Situation</label>
+      <select id="lf-situation" name="situation">
+        <option value="">Select one</option>
+        {situationOptions.map((o) => <option>{o}</option>)}
+      </select>
+    </div>
+    <div class="field">
+      <label for="lf-timeline">Timeline to sell</label>
+      <select id="lf-timeline" name="timeline">
+        <option value="">Select one</option>
+        {timelineOptions.map((o) => <option>{o}</option>)}
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="lf-message">Anything else? (optional)</label>
+    <textarea id="lf-message" name="message"></textarea>
+  </div>
+  <button class="btn btn-gold" type="submit">Send my details</button>
+  <p class="fine">No spam, no pushy sales calls. I personally read every message. <a href="/privacy/">Privacy</a></p>
+</form>
+<style>
+  .fine{font-size:.78rem;color:var(--muted);margin:12px 0 0;text-align:center}
+  .fine a{color:var(--green)}
+</style>

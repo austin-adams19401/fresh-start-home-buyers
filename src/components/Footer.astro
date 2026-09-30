@@ -1,0 +1,60 @@
+---
+import Logo from './Logo.astro';
+import { site, nav } from '../site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <div class="col about">
+        <a class="brand" href="/">
+          <Logo />
+          <span class="name"><b>Fresh Start</b><span>HOME BUYERS</span></span>
+        </a>
+        <p class="tag">{site.tagline}</p>
+        <p>Local investor based in {site.city}, Utah. I buy houses across Davis and Weber Counties and help sellers find the option that actually fits.</p>
+      </div>
+      <div class="col">
+        <h4>Ways I can help</h4>
+        {nav.slice(0, 4).map((n) => <p><a href={n.href}>{n.label}</a></p>)}
+        <p><a href="/compare/">Compare your options</a></p>
+      </div>
+      <div class="col">
+        <h4>Company</h4>
+        <p><a href="/how-it-works/">How it works</a></p>
+        <p><a href="/about/">About Austin</a></p>
+        <p><a href="/faq/">FAQ</a></p>
+        <p><a href="/get-offer/">Get an offer</a></p>
+        <p><a href="/privacy/">Privacy</a></p>
+      </div>
+      <div class="col">
+        <h4>Get in touch</h4>
+        <p><a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a> &nbsp;call or text</p>
+        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <h4 style="margin-top:18px">Service area</h4>
+        <p>{site.cities.join(' · ')}</p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; {year} {site.legalName}. All rights reserved.</span>
+      <span>We are real estate investors, not licensed agents. Nothing on this site is financial, legal, or tax advice.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer{background:var(--green-d);color:#BCD0C7;padding:56px 0 30px;font-size:.92rem}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:32px}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-bottom:12px}
+  .brand .name{line-height:1.05}
+  .brand .name b{font-family:'Lora',serif;font-weight:600;font-size:1.25rem;color:var(--cream);display:block}
+  .brand .name span{font-size:.62rem;letter-spacing:.26em;color:var(--gold);font-weight:600}
+  .tag{font-style:italic;font-family:'Lora',serif;color:var(--cream)}
+  .col h4{color:var(--cream);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;font-family:'Poppins',sans-serif;font-weight:600}
+  .col p{margin-bottom:6px}
+  .col a{color:#E6EFEA;text-decoration:none}
+  .col a:hover{color:var(--gold)}
+  .legal{border-top:1px solid rgba(255,255,255,.1);margin-top:36px;padding-top:18px;font-size:.78rem;color:#8AA89C;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  @media(max-width:900px){.foot{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.foot{grid-template-columns:1fr}}
+</style>

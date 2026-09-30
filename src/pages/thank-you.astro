@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Logo from '../components/Logo.astro';
+import { site } from '../site';
+---
+<BaseLayout title="Thank you" description="Your details are in. Austin will reach out soon." noindex>
+  <section class="bg-green ty">
+    <div class="wrap center box">
+      <Logo size={64} />
+      <h1>Thank you. I’ll be in touch soon.</h1>
+      <p>Your details are in. I personally review every message and will reach out, usually within one business day.</p>
+      <p>Need to talk sooner? Call or text me anytime at <a href={`tel:${site.phoneTel}`} class="phone">{site.phoneDisplay}</a>.</p>
+      <p style="margin-top:26px"><a class="btn btn-gold" href="/">Back to home</a> <a class="btn btn-ghost" href="/how-it-works/">See what happens next</a></p>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .ty{min-height:60vh;display:flex;align-items:center;padding:80px 0}
+  .box{max-width:560px}
+  .box h1{margin:20px 0 14px}
+  .box p{font-size:1.05rem}
+  .phone{color:var(--gold);font-weight:600;text-decoration:none}
+  .box .btn{margin:4px}
+</style>

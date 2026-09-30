@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import OfferSection from '../components/OfferSection.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../site';
+---
+<BaseLayout
+  title="About Austin Adams | Fresh Start Home Buyers, Kaysville, Utah"
+  description="Meet Austin Adams, the local investor behind Fresh Start Home Buyers. Kaysville dad, problem solver, and the person who answers when you call."
+>
+  <section class="bg-green about-hero">
+    <div class="wrap grid-about">
+      <img src="/images/austin-square.jpg" alt="Austin Adams" width="800" height="800" />
+      <div>
+        <div class="eyebrow">About</div>
+        <h1>Hi, I’m Austin.</h1>
+        <p class="lede">I’m a real estate investor here in Kaysville with a drive to help people who are facing tough situations: foreclosure, divorce, an inherited house, unexpected repairs, you name it. I love solving problems and making a real difference for the families I work with.</p>
+        <p class="lede">If you or someone you know needs a way through, reach out. My team and I can give you a fair offer and a stress-free closing, often within ten days, and honest advice if selling to me isn’t your best move.</p>
+        <div class="cta"><a class="btn btn-gold" href="#offer">Get in touch</a><a class="btn btn-ghost" href={`tel:${site.phoneTel}`}>Call or text {site.phoneDisplay}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap grid grid-2" style="gap:56px;align-items:start">
+      <div class="prose">
+        <div class="eyebrow">Why I do this</div>
+        <h2 style="margin-top:0">Two goals that fit together</h2>
+        <p>The first is my family. I want us to be financially free and I want to be present for my kids, not stuck behind a desk until they’re grown. Real estate is how I’m building that.</p>
+        <p>The second is the people I work with. The homeowners who call me are almost always going through something hard, and most of the "we buy houses" world treats them as a number to squeeze. I don’t. My business only works long-term if the people I buy from would send their friends to me. That means fair offers, real explanations, and telling you the truth even when it costs me a deal.</p>
+        <p>Those two goals aren’t in tension. Relationships built on mutual wins are the whole business plan.</p>
+      </div>
+      <div class="prose">
+        <div class="eyebrow">A little more</div>
+        <h2 style="margin-top:0">Off the clock</h2>
+        <p>My wife Janae and I live in Kaysville with our kids. We have a full house, and it keeps getting fuller. Weekends are soccer games, church, and whatever project is half-finished in the garage.</p>
+        <p>By day I’m a software engineer, which is probably why I care so much about showing my work: every offer comes with the math, not a vibe. I also run a small bookkeeping practice for real estate investors, so I understand the numbers on your side of the table too.</p>
+        <!-- PLACEHOLDER: add anything else you want here: how long in Davis County, community involvement, first deal story. -->
+        <p data-placeholder="optional personal detail"><em>Optional: a sentence about how long you’ve lived in Davis County, community involvement, or your first deal.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream-2">
+    <div class="wrap">
+      <div class="sec-head"><div class="eyebrow">How I work</div><h2>What you can count on</h2></div>
+      <div class="grid grid-4">
+        {[
+          ['phone', 'I answer', 'You get me, not a call center. Same-day replies, usually within the hour.'],
+          ['calc', 'I show the math', 'Every offer comes with the numbers behind it. Ask me anything.'],
+          ['handshake', 'I tell the truth', 'If listing or another buyer would serve you better, I say so.'],
+          ['shield', 'I close clean', 'Licensed Utah title company, attorney-drafted documents, no surprises.'],
+        ].map(([icon, title, text]) => (
+          <div class="card">
+            <div class="ic"><Icon name={icon} /></div>
+            <h3>{title}</h3>
+            <p style="margin:0">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap prose">
+      <div class="eyebrow">The company</div>
+      <h2 style="margin-top:0">Fresh Start Home Buyers</h2>
+      <p>Fresh Start Home Buyers is the name I do business under. The legal entity is {site.legalName}, a Utah company based in Kaysville. I buy with my own funds and with private partners, I’m not a licensed real estate agent, and I don’t list houses. I serve Davis and Weber Counties: {site.cities.join(', ')}, and the surrounding Wasatch Front.</p>
+    </div>
+  </section>
+
+  <CtaBand title="Have a house you’re not sure what to do with?" text="Tell me what’s going on. Even if we don’t work together, you’ll leave the call knowing your options." />
+  <OfferSection />
+</BaseLayout>
+<style>
+  .about-hero{padding:64px 0 72px}
+  .grid-about{display:grid;grid-template-columns:340px 1fr;gap:52px;align-items:center}
+  .grid-about img{border-radius:50%;width:100%;max-width:340px;aspect-ratio:1;object-fit:cover;border:8px solid rgba(255,255,255,.1);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+  .about-hero h1{margin:10px 0 16px}
+  .about-hero .lede{font-size:1.08rem;max-width:620px}
+  .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  @media(max-width:860px){.grid-about{grid-template-columns:1fr;text-align:center}.grid-about img{margin:0 auto;max-width:240px}.cta{justify-content:center}}
+</style>

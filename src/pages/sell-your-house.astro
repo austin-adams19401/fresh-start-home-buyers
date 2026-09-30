@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import OfferSection from '../components/OfferSection.astro';
+import Steps from '../components/Steps.astro';
+import Faq from '../components/Faq.astro';
+import Icon from '../components/Icon.astro';
+import { faqs } from '../data/faqs';
+import { site } from '../site';
+const pageFaqs = faqs.filter((f) => ['How do you come up with your offer?', 'How fast can you close?', 'Do I need to clean or fix anything?', 'Will you pay full market value?'].includes(f.q));
+---
+<BaseLayout
+  title="Sell Your House for Cash, As-Is | Davis & Weber County, Utah"
+  description="Get a fair cash offer for your Davis or Weber County home. No repairs, no showings, no agent fees. Close in as little as 10 days or on the date you choose."
+>
+  <PageHero eyebrow="Cash offer, as-is" title="Sell your house for cash, exactly as it sits" lede="No repairs, no cleaning, no showings, no commissions. A fair, clearly explained offer and a closing date you choose.">
+    <div class="cta"><a class="btn btn-gold" href="#offer">Get my cash offer</a><a class="btn btn-ghost" href={`tel:${site.phoneTel}`}>Call or text {site.phoneDisplay}</a></div>
+  </PageHero>
+
+  <section>
+    <div class="wrap">
+      <div class="grid grid-2" style="gap:48px;align-items:center">
+        <div class="prose">
+          <div class="eyebrow">What you get</div>
+          <h2 style="margin-top:0">Speed and certainty, without the haircut you expect</h2>
+          <p>A cash offer is the simplest way to sell. I buy with my own funds and partners, so there is no lender, no appraisal, and no financing contingency that can fall apart a week before closing.</p>
+          <p>Because I'm local and do my own renovations, my costs are lower than the big national buyers. That means I can usually offer more than the postcard companies, and I'll show you exactly how I got to the number.</p>
+          <ul class="check-list">
+            <li><b>Any condition.</b> Foundation, roof, mold, hoarding, fire damage, half-finished projects.</li>
+            <li><b>Any situation.</b> Inherited, pre-foreclosure, tenants in place, probate, divorce, code violations.</li>
+            <li><b>Your timeline.</b> Close in ten days or in three months. Short rent-back after closing if you need it.</li>
+            <li><b>No fees.</b> No commissions. I cover typical closing costs.</li>
+          </ul>
+        </div>
+        <div class="grid" style="gap:14px">
+          {[
+            ['calc', 'Fair, explained offer', 'After-repair value, minus repairs, minus my costs and margin. Every line shown to you.'],
+            ['calendar', 'Close when you want', 'Ten days is possible. Ninety is fine too. You set the date.'],
+            ['shield', 'No surprises', 'The offer is the offer. No renegotiating after an inspection.'],
+            ['handshake', 'Honest advice', 'If listing would net you more, I will say so and connect you with an agent.'],
+          ].map(([icon, title, text]) => (
+            <div class="card" style="flex-direction:row;gap:16px;align-items:flex-start">
+              <div class="ic" style="margin:0;flex:0 0 auto"><Icon name={icon} /></div>
+              <div><h3 style="margin-bottom:4px">{title}</h3><p style="margin:0">{text}</p></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream-2">
+    <div class="wrap">
+      <div class="sec-head"><div class="eyebrow">Real numbers</div><h2>How I calculate an offer</h2><p>No mystery formula. Here is the whole thing.</p></div>
+      <div class="formula">
+        <div class="f-item"><span class="f-label">After-repair value</span><span class="f-desc">What the home sells for fully updated, based on recent nearby sales</span></div>
+        <div class="f-op">−</div>
+        <div class="f-item"><span class="f-label">Repair costs</span><span class="f-desc">What it actually costs me to bring it to that standard</span></div>
+        <div class="f-op">−</div>
+        <div class="f-item"><span class="f-label">Holding + selling costs</span><span class="f-desc">Loan interest, utilities, taxes, insurance, and the commissions I pay when I resell</span></div>
+        <div class="f-op">−</div>
+        <div class="f-item"><span class="f-label">My margin</span><span class="f-desc">The return that makes the risk worth taking</span></div>
+        <div class="f-op">=</div>
+        <div class="f-item f-result"><span class="f-label">Your cash offer</span><span class="f-desc">Paid in full at a local title company</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><div class="eyebrow">The process</div><h2>How it works</h2></div>
+      <Steps />
+    </div>
+  </section>
+
+  <section class="bg-cream-2">
+    <div class="wrap" style="max-width:820px">
+      <div class="sec-head"><h2>Cash offer questions</h2></div>
+      <Faq items={pageFaqs} />
+    </div>
+  </section>
+
+  <OfferSection />
+</BaseLayout>
+<style>
+  .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+  .formula{display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:10px}
+  .f-item{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px;flex:1 1 170px;max-width:220px;display:flex;flex-direction:column;gap:6px}
+  .f-label{font-weight:600;color:var(--green);font-size:.95rem}
+  .f-desc{font-size:.8rem;color:var(--muted);line-height:1.45}
+  .f-op{align-self:center;font-family:'Lora',serif;font-size:1.8rem;color:var(--gold);padding:0 4px}
+  .f-result{background:var(--green);border-color:var(--green)}
+  .f-result .f-label{color:var(--gold)}
+  .f-result .f-desc{color:var(--on-green)}
+</style>

@@ -1,0 +1,73 @@
+---
+import Logo from './Logo.astro';
+import { site, nav } from '../site';
+const current = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="nav wrap">
+    <a class="brand" href="/" aria-label={`${site.name} home`}>
+      <Logo />
+      <span class="name"><b>Fresh Start</b><span>HOME BUYERS</span></span>
+    </a>
+    <nav class="links" aria-label="Main">
+      {nav.map((n) => <a href={n.href} aria-current={current === n.href ? 'page' : undefined}>{n.label}</a>)}
+    </nav>
+    <div class="actions">
+      <a class="phone" href={`tel:${site.phoneTel}`}>Call or text <span>{site.phoneDisplay}</span></a>
+      <a class="btn btn-gold btn-sm" href="/get-offer/">Get my offer</a>
+      <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+    <a href="/get-offer/" class="btn btn-gold">Get my cash offer</a>
+  </div>
+</header>
+
+<style>
+  .site-header{position:sticky;top:0;z-index:40;background:var(--green);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 22px}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex:0 0 auto}
+  .brand .name{line-height:1.05}
+  .brand .name b{font-family:'Lora',serif;font-weight:600;font-size:1.18rem;color:var(--cream);display:block}
+  .brand .name span{font-size:.62rem;letter-spacing:.26em;color:var(--gold);font-weight:600}
+  .links{display:flex;gap:2px;flex-wrap:wrap;justify-content:center}
+  .links a{color:var(--on-green);text-decoration:none;font-size:.85rem;font-weight:500;padding:8px 9px;border-radius:6px;white-space:nowrap}
+  .links a:hover,.links a[aria-current]{color:var(--cream);background:rgba(255,255,255,.08)}
+  .actions{display:flex;align-items:center;gap:14px;flex:0 0 auto}
+  .phone{color:var(--cream);text-decoration:none;font-weight:600;font-size:.92rem;white-space:nowrap}
+  .phone span{color:var(--gold)}
+  .burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer;flex-direction:column;justify-content:center;gap:5px;align-items:center}
+  .burger span{display:block;width:22px;height:2px;background:var(--cream);transition:.2s}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{display:none;flex-direction:column;gap:4px;padding:10px 22px 20px;background:var(--green-d);border-top:1px solid rgba(255,255,255,.08)}
+  .mobile-menu a{color:var(--cream);text-decoration:none;padding:12px 6px;border-bottom:1px solid rgba(255,255,255,.08);font-weight:500}
+  .mobile-menu a.btn{margin-top:12px;border:none;justify-content:center}
+  .mobile-menu:not([hidden]){display:flex}
+  @media(max-width:1320px){
+    .phone{display:none}
+  }
+  @media(max-width:1060px){
+    .phone{display:inline}
+    .links{display:none}
+    .burger{display:flex}
+    .actions .btn{display:none}
+  }
+  @media(max-width:560px){
+    .phone{display:none}
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.burger');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    if (menu) menu.hidden = open;
+  });
+</script>

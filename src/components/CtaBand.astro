@@ -1,0 +1,21 @@
+---
+import { site } from '../site';
+interface Props { title?: string; text?: string }
+const {
+  title = 'Not sure which option fits? Let’s talk it through.',
+  text = 'A ten-minute call is usually enough to know whether a cash offer, flexible terms, or a listing makes the most sense for you.',
+} = Astro.props;
+---
+<section class="cta-band">
+  <div class="wrap center">
+    <h2>{title}</h2>
+    <p>{text}</p>
+    <div class="btns">
+      <a class="btn btn-dark" href="/get-offer/">Get my offer</a>
+      <a class="btn btn-dark" href={`tel:${site.phoneTel}`}>Call or text {site.phoneDisplay}</a>
+    </div>
+  </div>
+</section>
+<style>
+  .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+</style>

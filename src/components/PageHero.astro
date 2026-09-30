@@ -1,0 +1,13 @@
+---
+interface Props { eyebrow?: string; title: string; lede?: string }
+const { eyebrow, title, lede } = Astro.props;
+---
+<section class="page-hero">
+  <svg class="ghost" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 L44 22 L38 22 L38 42 L28 42 L28 30 L20 30 L20 42 L10 42 L10 22 L4 22 Z" fill="#fff"/></svg>
+  <div class="wrap">
+    {eyebrow && <div class="eyebrow">{eyebrow}</div>}
+    <h1>{title}</h1>
+    {lede && <p class="lede">{lede}</p>}
+    <slot />
+  </div>
+</section>

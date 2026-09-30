@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import OfferSection from '../components/OfferSection.astro';
+import Faq from '../components/Faq.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../site';
+const faqItems = [
+  { q: 'Is this safe for me as the seller?', a: '<p>Yes, when it is done properly. Every deal closes at a title company with attorney-drafted documents. With seller financing you hold a recorded lien on the property, the same protection a bank has. If I stop paying, you can take the house back.</p>' },
+  { q: 'What if I still have a mortgage?', a: '<p>That is often where creative terms shine. A "subject-to" purchase means I take over your existing payments and the loan gets paid down (or paid off) on schedule. We put protections in place so the payments are made and you can verify it.</p>' },
+  { q: 'Why would I want payments instead of cash?', a: '<p>Three common reasons: you owe close to what the house is worth so a cash sale leaves you with little or nothing; you would rather have monthly income than a lump sum; or your CPA says spreading the gain over several years lowers your taxes.</p>' },
+  { q: 'Can I get some cash at closing too?', a: '<p>Usually. Most creative deals include a down payment, and the amount is negotiable.</p>' },
+];
+---
+<BaseLayout
+  title="Creative Financing: Sell With Seller Financing or Subject-To | Utah"
+  description="Little equity, or want monthly income instead of a lump sum? Seller financing, subject-to, and lease options can net Utah sellers more than a cash sale. Here is how they work."
+>
+  <PageHero eyebrow="Creative financing" title="Sell for more by getting paid over time" lede="When a cash sale doesn’t pencil out, flexible terms often do. You get a higher price, I get a workable deal, and everything is secured at a title company.">
+    <div class="cta"><a class="btn btn-gold" href="#offer">Ask if this fits my house</a><a class="btn btn-ghost" href={`tel:${site.phoneTel}`}>Call or text {site.phoneDisplay}</a></div>
+  </PageHero>
+
+  <section>
+    <div class="wrap prose">
+      <div class="eyebrow">Plain English</div>
+      <h2 style="margin-top:0">What "creative financing" actually means</h2>
+      <p>Most people think a house sells one way: a buyer brings cash (their own or a bank’s), you get a check, done. Creative financing just means the money moves differently. Instead of everything on closing day, part or all of the price is paid over time, or I take over the loan you already have.</p>
+      <p>This is not new or exotic. Sellers have carried financing for generations. It simply isn’t something the average agent brings up, because it doesn’t fit a standard listing.</p>
+    </div>
+  </section>
+
+  <section class="bg-cream-2">
+    <div class="wrap">
+      <div class="sec-head"><div class="eyebrow">Three common structures</div><h2>Which one fits depends on your loan, your equity, and what you need</h2></div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="ic"><Icon name="handshake" /></div>
+          <h3>Seller financing</h3>
+          <p>You become the bank. I pay a down payment, then monthly payments with interest until the balance is paid. You hold a recorded lien on the house for protection.</p>
+          <p><b>Good fit when:</b> the house is paid off or nearly so, you want monthly income, or you want to spread out capital gains.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><Icon name="wallet" /></div>
+          <h3>Subject-to</h3>
+          <p>I take over your existing mortgage payments and the deed transfers to me. The loan stays in your name until paid off or refinanced, with safeguards so you can confirm every payment is made.</p>
+          <p><b>Good fit when:</b> you owe close to what the house is worth, you are behind or about to be, or you have a great low interest rate.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><Icon name="key" /></div>
+          <h3>Lease option</h3>
+          <p>I lease the property from you with the right to buy at an agreed price later. You keep the title and receive rent until I exercise the option.</p>
+          <p><b>Good fit when:</b> you want to keep the asset a while longer but stop managing it, or timing needs to be flexible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="grid grid-2" style="gap:48px;align-items:start">
+        <div class="prose">
+          <div class="eyebrow">Example</div>
+          <h2 style="margin-top:0">Why terms can beat cash</h2>
+          <p>Say a house would sell for $400,000 fixed up and you owe $360,000. A cash buyer has to subtract repairs, costs, and margin, so a cash offer might land around $320,000. That doesn’t even cover your loan.</p>
+          <p>With a subject-to purchase, I take over the $360,000 loan, give you some cash for your equity and moving costs, and you walk away with money in hand and no foreclosure risk. Same house, completely different outcome.</p>
+          <p class="muted" style="font-size:.85rem">Numbers are illustrative only. Every property is different.</p>
+        </div>
+        <div class="prose">
+          <div class="eyebrow">Protections</div>
+          <h2 style="margin-top:0">How you stay protected</h2>
+          <ul class="check-list">
+            <li>Every closing happens at a Utah title company with recorded documents.</li>
+            <li>Attorney-drafted notes, deeds of trust, and agreements. Not internet templates.</li>
+            <li>Third-party loan servicing available so payments are tracked and verified.</li>
+            <li>You are encouraged to have your own attorney or CPA review everything. I’ll wait.</li>
+            <li>If I stop paying, you have legal recourse to take the property back.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream-2">
+    <div class="wrap" style="max-width:820px">
+      <div class="sec-head"><h2>Creative financing questions</h2></div>
+      <Faq items={faqItems} />
+      <p class="muted center" style="font-size:.85rem;margin-top:18px">I am not an attorney, CPA, or financial advisor. Talk to yours about how any of these structures affect your taxes and situation.</p>
+    </div>
+  </section>
+
+  <OfferSection title="Wondering if terms would work for your house?" formTitle="Ask about creative options" />
+</BaseLayout>
+<style>.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}</style>

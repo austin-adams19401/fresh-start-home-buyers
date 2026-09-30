@@ -1,0 +1,39 @@
+---
+import Icon from './Icon.astro';
+export const services = [
+  {
+    href: '/sell-your-house/',
+    icon: 'cash',
+    title: 'Cash offer, as-is',
+    text: 'Sell exactly as it sits. No repairs, no showings, no agent fees, and you pick the closing date.',
+  },
+  {
+    href: '/creative-financing/',
+    icon: 'handshake',
+    title: 'Creative financing',
+    text: 'Little equity, or want monthly income instead of a lump sum? Seller financing and other flexible terms can net you more.',
+  },
+  {
+    href: '/list-with-an-agent/',
+    icon: 'sign',
+    title: 'List with an agent',
+    text: 'If your home is in good shape and you have time, a traditional listing may net the most. I will tell you so and connect you with a trusted agent.',
+  },
+  {
+    href: '/landlords/',
+    icon: 'key',
+    title: 'Landlords & rentals',
+    text: 'Done with tenants and turnovers? I buy occupied or vacant rentals, single units or a whole portfolio.',
+  },
+];
+---
+<div class="grid grid-4">
+  {services.map((s) => (
+    <a class="card" href={s.href}>
+      <div class="ic"><Icon name={s.icon} /></div>
+      <h3>{s.title}</h3>
+      <p>{s.text}</p>
+      <span class="more">Learn more</span>
+    </a>
+  ))}
+</div>

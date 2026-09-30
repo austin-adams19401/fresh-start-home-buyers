@@ -1,0 +1,14 @@
+---
+import { site } from '../site';
+---
+<div class="callbar" aria-label="Quick contact">
+  <a href={`tel:${site.phoneTel}`}>Call</a>
+  <a href={`sms:${site.phoneTel}`}>Text</a>
+  <a href="/get-offer/" class="primary">Get my offer</a>
+</div>
+<style>
+  .callbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--green-d);border-top:1px solid rgba(255,255,255,.1);padding:8px 10px;gap:8px;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+  .callbar a{flex:1;text-align:center;color:var(--cream);text-decoration:none;font-weight:600;padding:11px 6px;border-radius:8px;border:1px solid rgba(255,255,255,.2);font-size:.92rem}
+  .callbar a.primary{background:var(--gold);color:var(--green-d);border-color:var(--gold);flex:1.4}
+  @media(max-width:760px){.callbar{display:flex}}
+</style>

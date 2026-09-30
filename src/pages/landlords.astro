@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import OfferSection from '../components/OfferSection.astro';
+import Faq from '../components/Faq.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../site';
+const faqItems = [
+  { q: 'Do the tenants have to move out before you buy?', a: '<p>No. I buy occupied properties and honor existing leases. Tenants typically get a simple letter at closing telling them where to send rent.</p>' },
+  { q: 'What if the tenant isn’t paying or is a problem?', a: '<p>That’s my problem after closing, not yours. Tell me what’s going on so I can price it correctly, and I take it from there.</p>' },
+  { q: 'Can you buy several properties at once?', a: '<p>Yes. One contract, one closing, one wire. Portfolio purchases are often where seller financing makes the most sense for tax reasons, so talk to your CPA and then let’s talk.</p>' },
+  { q: 'What about the security deposits?', a: '<p>They transfer to me at closing and get credited on the settlement statement, the standard way any rental sale handles them.</p>' },
+];
+---
+<BaseLayout
+  title="Sell Your Rental Property or Portfolio in Utah | Occupied or Vacant"
+  description="Tired landlord in Davis or Weber County? Sell one rental or a whole portfolio with tenants in place. No repairs, no evictions, no cleanup. Flexible terms available."
+>
+  <PageHero eyebrow="Landlords & portfolios" title="Sell your rental without evicting anyone or fixing anything" lede="Occupied or vacant, one door or twenty. I buy rentals as they are, honor the leases, and close on your schedule.">
+    <div class="cta"><a class="btn btn-gold" href="#offer">Get a portfolio offer</a><a class="btn btn-ghost" href={`tel:${site.phoneTel}`}>Call or text {site.phoneDisplay}</a></div>
+  </PageHero>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><div class="eyebrow">Sound familiar?</div><h2>Reasons landlords call me</h2></div>
+      <div class="grid grid-3">
+        {[
+          ['wrench', 'The repairs never stop', 'Water heaters, roofs, turnovers. What was supposed to be passive income became a second job.'],
+          ['wallet', 'A tenant stopped paying', 'Eviction takes time and money. You can sell now and let me deal with it.'],
+          ['truck', 'You’re moving or retiring', 'Managing from out of state, or simply done. Time to convert the equity to something simpler.'],
+          ['split', 'Partners want out', 'Ownership split between siblings or ex-partners. One clean sale ends the arguments.'],
+          ['calc', 'The tax bill scares you', 'Depreciation recapture and capital gains add up. Seller financing can spread the gain out over years.'],
+          ['home', 'Dated units, low rents', 'The property needs a full refresh to rent at market. You’d rather not fund it.'],
+        ].map(([icon, title, text]) => (
+          <div class="card">
+            <div class="ic"><Icon name={icon} /></div>
+            <h3>{title}</h3>
+            <p style="margin:0">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream-2">
+    <div class="wrap grid grid-2" style="gap:48px;align-items:start">
+      <div class="prose">
+        <div class="eyebrow">How it works</div>
+        <h2 style="margin-top:0">Simple for you, invisible to your tenants</h2>
+        <ol>
+          <li><b>Send me the basics.</b> Address(es), current rents, lease end dates, and anything you know needs work.</li>
+          <li><b>Quick walkthrough.</b> I can usually work from photos and a short visit. No parade of buyers through your tenants’ homes.</li>
+          <li><b>Offer with options.</b> Cash, seller financing, or a mix. You choose.</li>
+          <li><b>Close at title.</b> Leases, deposits, and prorated rents are handled on the settlement statement. Tenants get a letter with the new payment address.</li>
+        </ol>
+      </div>
+      <div class="prose">
+        <div class="eyebrow">Worth considering</div>
+        <h2 style="margin-top:0">Seller financing for landlords</h2>
+        <p>If you’ve owned a rental for years, a cash sale can trigger a large tax bill all at once. Carrying the financing lets you receive the price over time, often at a higher total, while keeping a secured lien on the property.</p>
+        <p>You keep the monthly income you’re used to, without the tenants, repairs, or management. Many landlords find it is the best of both worlds. <a href="/creative-financing/">Read more about how it works.</a></p>
+        <p class="muted" style="font-size:.85rem">Talk to your CPA about your specific tax situation. I am not a tax advisor.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap" style="max-width:820px">
+      <div class="sec-head"><h2>Landlord questions</h2></div>
+      <Faq items={faqItems} />
+    </div>
+  </section>
+
+  <OfferSection title="Tell me about your rental" formTitle="Get a rental offer" />
+</BaseLayout>
+<style>.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}</style>

@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import OfferSection from '../components/OfferSection.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../site';
+---
+<BaseLayout
+  title="Should You List Instead? Honest Advice From a Utah Home Buyer"
+  description="Sometimes a traditional listing nets more than a cash offer. If that is true for your Davis or Weber County home, I will say so and connect you with an agent I trust."
+>
+  <PageHero eyebrow="List with an agent" title="Sometimes the best advice is: don’t sell to me" lede="If your house is in good shape and you have time, a listing will usually net more than any investor can pay. I will tell you when that is the case, and connect you with an agent I trust.">
+    <div class="cta"><a class="btn btn-gold" href="#offer">Ask which route fits</a><a class="btn btn-ghost" href={`tel:${site.phoneTel}`}>Call or text {site.phoneDisplay}</a></div>
+  </PageHero>
+
+  <section>
+    <div class="wrap prose">
+      <div class="eyebrow">Why I offer this</div>
+      <h2 style="margin-top:0">I’d rather be the person you trust than the person who bought your house</h2>
+      <p>My business is built on relationships and referrals, not on squeezing every seller who calls. A cash offer is the right tool for maybe a third of the people I talk to. For the rest, a well-run listing gets them more money, and pushing a cash sale on them would be a bad trade.</p>
+      <p>So when I look at your house and the numbers say "list it," that’s what I’ll tell you. If you want, I’ll introduce you to a local agent I’ve vetted, and I step out of the way.</p>
+      <!-- PLACEHOLDER: confirm the partner agent arrangement and whether you receive a referral fee. Disclose it here if so. -->
+      <p data-placeholder="partner agent wording"><em>Placeholder: name the agent or brokerage you refer to, and state whether you receive a referral fee. Utah requires referral fees to be paid only between licensed brokerages, so confirm the arrangement with the agent before publishing.</em></p>
+    </div>
+  </section>
+
+  <section class="bg-cream-2">
+    <div class="wrap">
+      <div class="sec-head"><div class="eyebrow">Which is right for you?</div><h2>A quick gut check</h2></div>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="ic"><Icon name="sign" /></div>
+          <h3>Listing probably nets more if…</h3>
+          <ul class="check-list" style="margin:0">
+            <li>The home is updated or in good, clean condition</li>
+            <li>You can wait 45 to 90 days and handle showings</li>
+            <li>You have enough equity that 5 to 6% in commissions is fine</li>
+            <li>There’s no urgent deadline, foreclosure, or family pressure</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="ic"><Icon name="cash" /></div>
+          <h3>A direct sale probably fits better if…</h3>
+          <ul class="check-list" style="margin:0">
+            <li>The house needs real work, or you don’t want strangers walking through</li>
+            <li>You need certainty on the date, or need to close fast</li>
+            <li>There are tenants, probate, or title issues to work around</li>
+            <li>You owe close to what it’s worth (see <a href="/creative-financing/">creative options</a>)</li>
+          </ul>
+        </div>
+      </div>
+      <p class="center" style="margin-top:26px"><a href="/compare/" class="btn btn-outline">See the full comparison</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap prose">
+      <div class="eyebrow">Either way</div>
+      <h2 style="margin-top:0">Get my number first. It costs nothing and gives you a floor.</h2>
+      <p>Even if you plan to list, knowing what a cash buyer will pay today is useful. It tells you the worst case, and it gives you a backup plan if the listing stalls or a buyer’s financing falls through. Plenty of people take my offer, list anyway, and come back to me later. That is fine.</p>
+    </div>
+  </section>
+
+  <OfferSection title="Not sure whether to list or sell direct?" formTitle="Ask for an honest opinion" />
+</BaseLayout>
+<style>.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}</style>

@@ -1,9 +1,13 @@
 # Netlify build/deploy config for adamsfreshstart.com
-# Static site, no build step. Just deploy the folder.
+# Astro static site. Netlify Functions live in netlify/functions.
 
 [build]
-  publish = "."
-  command = ""
+  publish = "dist"
+  command = "npm run build"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
 
 # Security + caching headers
 [[headers]]
@@ -13,9 +17,20 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Force the bare/apex and www to one canonical host (https handled by Netlify)
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Force www to the apex host (https handled by Netlify)
 [[redirects]]
   from = "https://www.adamsfreshstart.com/*"
   to = "https://adamsfreshstart.com/:splat"
   status = 301
   force = true
+
+# Old single-page anchors
+[[redirects]]
+  from = "/thank-you.html"
+  to = "/thank-you/"
+  status = 301

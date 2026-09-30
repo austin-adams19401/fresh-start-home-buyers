@@ -1,0 +1,25 @@
+---
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+const steps = [
+  { title: 'Reach out', text: 'Call, text, use the chat, or fill out the form with a few details about your property. Takes about two minutes.' },
+  { title: 'Get real options', text: 'I look at the home and the numbers, then walk you through what I can offer. Usually within 24 to 48 hours, and never any pressure.' },
+  { title: 'Close on your schedule', text: 'If an option works for you, pick the closing date. I cover typical closing costs. No fees, no repairs, no surprises.' },
+];
+---
+<div class="stepgrid">
+  {steps.map((s, i) => (
+    <div class="step">
+      <div class="num">{i + 1}</div>
+      <h3>{s.title}</h3>
+      {!compact && <p>{s.text}</p>}
+    </div>
+  ))}
+</div>
+<style>
+  .stepgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
+  .step{text-align:center;padding:8px}
+  .step .num{width:54px;height:54px;border-radius:50%;background:var(--green);color:var(--gold);font-family:'Lora',serif;font-weight:600;font-size:1.4rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+  .step h3{color:var(--green);font-size:1.18rem;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.95rem;max-width:320px;margin:0 auto}
+</style>

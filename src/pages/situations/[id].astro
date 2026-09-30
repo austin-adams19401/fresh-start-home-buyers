@@ -1,0 +1,52 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import OfferSection from '../../components/OfferSection.astro';
+import Steps from '../../components/Steps.astro';
+import Icon from '../../components/Icon.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('situations');
+  return entries.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const others = (await getCollection('situations')).filter((s) => s.id !== entry.id).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title={entry.data.metaTitle} description={entry.data.metaDescription}>
+  <PageHero eyebrow={entry.data.title} title={entry.data.headline} />
+  <section>
+    <div class="wrap two-col">
+      <article class="prose">
+        <Content />
+        <p style="margin-top:28px"><a class="btn btn-gold" href="#offer">Get my offer</a></p>
+      </article>
+      <aside>
+        <div class="side">
+          <h3>Other situations</h3>
+          <ul>
+            {others.map((s) => <li><a href={`/situations/${s.id}/`}><Icon name={s.data.icon} size={18} /> {s.data.title}</a></li>)}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <section class="bg-cream-2 tight">
+    <div class="wrap">
+      <h2 class="center" style="margin-bottom:32px">Three simple steps</h2>
+      <Steps compact />
+    </div>
+  </section>
+  <OfferSection />
+</BaseLayout>
+<style>
+  .two-col{display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:start}
+  .side{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:sticky;top:90px}
+  .side h3{font-size:1rem;margin-bottom:12px}
+  .side ul{list-style:none;padding:0;margin:0}
+  .side li{margin-bottom:8px}
+  .side a{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--green);font-size:.93rem;font-weight:500}
+  .side a:hover{color:var(--gold-d)}
+  @media(max-width:860px){.two-col{grid-template-columns:1fr}.side{position:static}}
+</style>

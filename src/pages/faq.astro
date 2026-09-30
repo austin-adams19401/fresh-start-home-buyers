@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Faq from '../components/Faq.astro';
+import OfferSection from '../components/OfferSection.astro';
+import { faqs } from '../data/faqs';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a.replace(/<[^>]+>/g, '') },
+  })),
+};
+---
+<BaseLayout
+  title="Frequently Asked Questions | Selling Your House in Davis & Weber County"
+  description="Answers to the questions Utah homeowners ask before selling to a local investor: how offers work, timelines, fees, creative financing, and what happens after you reach out."
+  jsonLd={jsonLd}
+>
+  <PageHero eyebrow="FAQ" title="Questions sellers ask me" lede="If yours isn’t here, call, text, or use the chat. I’d rather answer it directly than have you guess." />
+  <section>
+    <div class="wrap" style="max-width:820px">
+      <Faq items={faqs} />
+    </div>
+  </section>
+  <OfferSection />
+</BaseLayout>

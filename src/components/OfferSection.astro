@@ -1,0 +1,31 @@
+---
+import LeadForm from './LeadForm.astro';
+interface Props { title?: string; formTitle?: string }
+const { title = 'Tell me about your property', formTitle } = Astro.props;
+---
+<section class="bg-green" id="offer">
+  <div class="wrap">
+    <div class="offer-grid">
+      <div>
+        <div class="eyebrow">Request your offer</div>
+        <h2>{title}</h2>
+        <p class="lede">Share a few details and I’ll reach out personally. No spam, no pushy sales calls, and no obligation to accept anything.</p>
+        <ul class="offer-list">
+          <li>A fair offer based on real numbers, explained clearly</li>
+          <li>You choose the closing date</li>
+          <li>I cover the typical closing costs</li>
+          <li>Honest answers, even if selling to me isn’t your best move</li>
+        </ul>
+      </div>
+      <LeadForm title={formTitle} />
+    </div>
+  </div>
+</section>
+<style>
+  .offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .lede{font-size:1.05rem;margin-bottom:22px}
+  .offer-list{list-style:none;padding:0;margin:0}
+  .offer-list li{padding:10px 0 10px 26px;border-top:1px solid rgba(255,255,255,.12);color:#E6EFEA;font-size:.97rem;position:relative}
+  .offer-list li::before{content:"●";color:var(--gold);position:absolute;left:0;top:10px;font-size:.8rem}
+  @media(max-width:800px){.offer-grid{grid-template-columns:1fr;gap:30px}}
+</style>

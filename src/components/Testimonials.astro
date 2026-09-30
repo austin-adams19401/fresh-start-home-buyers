@@ -1,0 +1,34 @@
+---
+// PLACEHOLDER: set showTestimonials to true once real quotes are in.
+// Until then this section renders only in dev so the layout can be checked.
+const showTestimonials = false;
+const quotes = [
+  { text: 'PLACEHOLDER quote. Two or three sentences from a real seller about how the process went.', name: 'Seller name', where: 'Layton' },
+  { text: 'PLACEHOLDER quote. Keep it specific: the situation, the timeline, what it felt like.', name: 'Seller name', where: 'Ogden' },
+  { text: 'PLACEHOLDER quote. Real quotes only. Never invent testimonials.', name: 'Seller name', where: 'Kaysville' },
+];
+const render = showTestimonials || import.meta.env.DEV;
+---
+{render && (
+  <section class="bg-cream-2" data-placeholder={showTestimonials ? undefined : 'real testimonials'}>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">From sellers</div>
+        <h2>What it was like working together</h2>
+      </div>
+      <div class="grid grid-3">
+        {quotes.map((q) => (
+          <blockquote class="quote">
+            <p>“{q.text}”</p>
+            <footer><b>{q.name}</b> · {q.where}</footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+<style>
+  .quote{background:#fff;border-radius:var(--radius);padding:26px;border:1px solid var(--line);font-family:'Lora',serif;font-size:1.02rem;color:var(--ink)}
+  .quote p{margin-bottom:14px}
+  .quote footer{font-family:'Poppins',sans-serif;font-size:.85rem;color:var(--muted)}
+</style>

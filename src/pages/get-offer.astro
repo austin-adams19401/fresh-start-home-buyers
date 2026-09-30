@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../site';
+---
+<BaseLayout
+  title="Get Your Cash Offer | Fresh Start Home Buyers"
+  description="Request a no-obligation offer for your Davis or Weber County home. Share a few details and Austin will personally reach out within one business day."
+>
+  <section class="bg-green offer-page">
+    <div class="wrap grid-offer">
+      <div>
+        <div class="eyebrow">Request your offer</div>
+        <h1>Let’s look at your options</h1>
+        <p class="lede">Fill this out and I’ll reach out personally, usually the same day. Prefer to talk? Call or text me at <a href={`tel:${site.phoneTel}`} style="color:var(--gold);font-weight:600;text-decoration:none">{site.phoneDisplay}</a>.</p>
+        <ul class="promise">
+          <li><Icon name="shield" size={20} /> No obligation. No fees. No spam.</li>
+          <li><Icon name="calc" size={20} /> Real numbers, explained, within 24 to 48 hours</li>
+          <li><Icon name="handshake" size={20} /> Honest advice, even if it’s "list it"</li>
+          <li><Icon name="calendar" size={20} /> Close on your schedule</li>
+        </ul>
+        <div class="who">
+          <img src="/images/austin-square.jpg" alt="Austin Adams" width="72" height="72" />
+          <div><b>Austin Adams</b><br /><span>Local buyer, Kaysville, Utah</span></div>
+        </div>
+      </div>
+      <LeadForm title="Tell me about the property" sub="Takes about two minutes." />
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .offer-page{padding:56px 0 72px}
+  .grid-offer{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .offer-page h1{margin:10px 0 14px}
+  .offer-page .lede{font-size:1.05rem;margin-bottom:24px}
+  .promise{list-style:none;padding:0;margin:0 0 30px}
+  .promise li{display:flex;align-items:center;gap:12px;color:#E6EFEA;padding:9px 0;border-top:1px solid rgba(255,255,255,.12)}
+  .promise svg{color:var(--gold);flex:0 0 auto}
+  .who{display:flex;align-items:center;gap:14px;color:var(--on-green);font-size:.92rem}
+  .who img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.15)}
+  .who b{color:var(--cream)}
+  @media(max-width:800px){.grid-offer{grid-template-columns:1fr;gap:32px}}
+</style>

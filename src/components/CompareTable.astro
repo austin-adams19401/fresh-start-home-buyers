@@ -1,0 +1,32 @@
+---
+const rows = [
+  ['Timeline to close', 'As fast as 10 days, or whenever you choose', 'Flexible, often 2 to 6 weeks', 'Typically 45 to 90 days including listing time'],
+  ['Repairs needed', 'None. I buy as-is', 'Usually none', 'Often needed to attract retail buyers'],
+  ['Agent commissions', 'None', 'None', 'Typically 5 to 6% of the sale price'],
+  ['Closing costs', 'I cover typical closing costs', 'Negotiable, often shared', 'Seller pays their share'],
+  ['Showings and cleanup', 'None', 'None', 'Yes, plus staging and photos'],
+  ['Certainty', 'High. No financing contingency', 'High once terms are agreed', 'Depends on buyer financing and inspections'],
+  ['Best for', 'Speed, simplicity, homes needing work', 'Low equity, wanting monthly income, or tax planning', 'Move-in ready homes with time to wait for top dollar'],
+  ['Sale price', 'Below retail, in exchange for speed and certainty', 'Often at or near retail, paid over time', 'Highest gross price, less fees and repairs'],
+];
+---
+<div class="compare-scroll">
+  <table class="compare">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Cash offer</th>
+        <th scope="col">Creative financing</th>
+        <th scope="col">List with an agent</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map(([label, ...cells]) => (
+        <tr>
+          <td>{label}</td>
+          {cells.map((c) => <td>{c}</td>)}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

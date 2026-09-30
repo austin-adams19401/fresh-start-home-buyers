@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CompareTable from '../components/CompareTable.astro';
+import OfferSection from '../components/OfferSection.astro';
+---
+<BaseLayout
+  title="Cash Offer vs. Creative Financing vs. Listing: Compare Your Options"
+  description="Side-by-side comparison of selling your Utah home for cash, with seller financing, or through an agent. Timeline, fees, repairs, certainty, and net proceeds."
+>
+  <PageHero eyebrow="Compare your options" title="Cash, terms, or list? Here is the honest comparison." lede="There is no single right answer. It depends on your house, your equity, and how much time and hassle you can take on. This table is where I start every conversation." />
+
+  <section>
+    <div class="wrap">
+      <CompareTable />
+      <p class="muted" style="font-size:.85rem;margin-top:14px">Timelines and percentages are typical ranges, not promises. Every property and market is different.</p>
+    </div>
+  </section>
+
+  <section class="bg-cream-2">
+    <div class="wrap prose">
+      <div class="eyebrow">A worked example</div>
+      <h2 style="margin-top:0">Same house, three paths</h2>
+      <p>Imagine a 1970s home in Layton that would sell for <b>$450,000</b> fully updated. As it sits, it needs about <b>$60,000</b> of work. The owner owes <b>$200,000</b>.</p>
+      <div class="grid grid-3">
+        <div class="ex">
+          <h3>List it</h3>
+          <p>Sells for $390,000 as-is after 60 days. Minus 5.5% commissions ($21,450), seller closing costs (about $4,000), and a $6,000 repair credit after inspection.</p>
+          <p class="net">Net before loan payoff: about <b>$358,500</b><br />Time: 75 to 90 days, plus showings</p>
+        </div>
+        <div class="ex">
+          <h3>Cash offer</h3>
+          <p>$450,000 minus $60,000 repairs, roughly $45,000 in holding, resale, and closing costs, and my margin. Offer around $300,000. No commissions, no repairs, no showings.</p>
+          <p class="net">Net before loan payoff: about <b>$300,000</b><br />Time: 10 to 30 days, your choice</p>
+        </div>
+        <div class="ex">
+          <h3>Seller financing</h3>
+          <p>I take over the $200,000 loan and pay $150,000 for the equity: $30,000 down and $120,000 over 10 years with interest. Higher total, monthly income, and gains spread over time.</p>
+          <p class="net">Total received over time: <b>$150,000 + interest</b><br />Time: 2 to 4 weeks to close</p>
+        </div>
+      </div>
+      <p class="muted" style="font-size:.85rem;margin-top:14px">Illustrative numbers only. Actual offers depend on the specific property. Consult your CPA on tax treatment.</p>
+    </div>
+  </section>
+
+  <OfferSection title="Want to see the numbers for your house?" formTitle="Get all three options" />
+</BaseLayout>
+<style>
+  .ex{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;font-size:.93rem}
+  .ex h3{margin-bottom:8px;font-size:1.1rem}
+  .ex p{color:var(--muted)}
+  .ex .net{color:var(--green);margin:0;border-top:1px solid var(--line);padding-top:12px}
+</style>

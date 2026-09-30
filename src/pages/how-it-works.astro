@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import OfferSection from '../components/OfferSection.astro';
+import CtaBand from '../components/CtaBand.astro';
+const phases = [
+  {
+    n: '1', title: 'Reach out', time: 'Two minutes',
+    body: 'Call, text, use the chat, or fill out the form. I’ll ask a handful of questions: where the house is, its condition, whether anyone lives there, and what you’re hoping for. No script, no pressure.',
+  },
+  {
+    n: '2', title: 'Quick walkthrough', time: '20 to 30 minutes',
+    body: 'I come by at a time that works for you, or we do it on a video call. I’m looking at the big things: roof, foundation, mechanicals, layout. You don’t need to clean or hide anything. I’ve seen it all.',
+  },
+  {
+    n: '3', title: 'Real options, explained', time: 'Within 24 to 48 hours',
+    body: 'I run the numbers and come back with what I can do: a cash offer, creative terms, or a recommendation to list. I show you how I got there. You can take days or weeks to decide, and I’m happy for you to run it past family, an attorney, or an agent.',
+  },
+  {
+    n: '4', title: 'Sign and pick a date', time: 'Your call',
+    body: 'If an option works, we sign a straightforward purchase agreement and open escrow at a local title company. You choose the closing date, whether that’s ten days out or ninety.',
+  },
+  {
+    n: '5', title: 'Close and move on', time: 'Closing day',
+    body: 'Title handles the paperwork. Your loan, if any, is paid off. Funds go to you by wire or check. Leave whatever you don’t want in the house. That’s it. Fresh start.',
+  },
+];
+---
+<BaseLayout
+  title="How It Works: Selling Your House to a Local Utah Buyer"
+  description="Five simple steps from first call to closing day. No showings, no repairs, no fees, and a closing date you choose. Here is exactly what to expect."
+>
+  <PageHero eyebrow="How it works" title="What actually happens, start to finish" lede="Most of the stress in selling comes from not knowing what’s next. Here is the whole process, so there are no surprises." />
+
+  <section>
+    <div class="wrap" style="max-width:860px">
+      <ol class="timeline">
+        {phases.map((p) => (
+          <li>
+            <div class="tl-num">{p.n}</div>
+            <div class="tl-body">
+              <div class="tl-head"><h3>{p.title}</h3><span class="tl-time">{p.time}</span></div>
+              <p>{p.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="bg-cream-2">
+    <div class="wrap grid grid-2" style="gap:48px">
+      <div class="prose">
+        <div class="eyebrow">What you never have to do</div>
+        <h2 style="margin-top:0">Off your plate</h2>
+        <ul class="check-list">
+          <li>Clean, declutter, or stage</li>
+          <li>Make repairs or get contractor bids</li>
+          <li>Host showings or open houses</li>
+          <li>Pay agent commissions</li>
+          <li>Wait on a buyer’s loan approval or appraisal</li>
+          <li>Renegotiate after an inspection</li>
+          <li>Haul anything away</li>
+        </ul>
+      </div>
+      <div class="prose">
+        <div class="eyebrow">What I promise</div>
+        <h2 style="margin-top:0">My side of the deal</h2>
+        <ul class="check-list">
+          <li>I answer my own phone and reply the same day</li>
+          <li>Every number is explained, nothing hidden</li>
+          <li>I tell you when selling to me is not your best move</li>
+          <li>No pressure tactics, no expiring offers, no games</li>
+          <li>Everything closes at a licensed Utah title company</li>
+          <li>You can walk away at any point before signing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+  <OfferSection />
+</BaseLayout>
+<style>
+  .timeline{list-style:none;padding:0;margin:0;position:relative}
+  .timeline::before{content:"";position:absolute;left:27px;top:20px;bottom:20px;width:2px;background:var(--cream-3)}
+  .timeline li{display:flex;gap:26px;margin-bottom:34px;position:relative}
+  .tl-num{width:56px;height:56px;border-radius:50%;background:var(--green);color:var(--gold);font-family:'Lora',serif;font-weight:600;font-size:1.4rem;display:flex;align-items:center;justify-content:center;flex:0 0 auto;position:relative;z-index:1}
+  .tl-body{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;flex:1}
+  .tl-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .tl-time{font-size:.8rem;color:var(--gold-d);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+  .tl-body p{margin:0;color:var(--muted)}
+  @media(max-width:560px){.timeline::before{display:none}.timeline li{flex-direction:column;gap:10px}}
+</style>
